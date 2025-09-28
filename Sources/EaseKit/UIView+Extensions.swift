@@ -7,7 +7,22 @@
 
 import UIKit
 
+/// Extension to UIView that provides convenience methods for setting Auto Layout constraints,
+/// centering views, and rendering a view as an image.
 extension UIView{
+    /// Anchors the view's edges to the specified anchors with optional padding.
+    ///
+    /// - Parameters:
+    ///   - top: The top anchor to constrain to. Defaults to nil.
+    ///   - leading: The leading anchor to constrain to. Defaults to nil.
+    ///   - bottom: The bottom anchor to constrain to. Defaults to nil.
+    ///   - trailing: The trailing anchor to constrain to. Defaults to nil.
+    ///   - paddingTop: The padding to apply from the top anchor. Defaults to 0.
+    ///   - paddingLeft: The padding to apply from the leading anchor. Defaults to 0.
+    ///   - paddingBottom: The padding to apply from the bottom anchor. Defaults to 0.
+    ///   - paddingRight: The padding to apply from the trailing anchor. Defaults to 0.
+    ///
+    /// This method disables `translatesAutoresizingMaskIntoConstraints` and activates constraints for the provided anchors.
     func anchorView(top: NSLayoutYAxisAnchor? = nil,
                     leading: NSLayoutXAxisAnchor? = nil,
                     bottom: NSLayoutYAxisAnchor? = nil,
@@ -36,6 +51,13 @@ extension UIView{
         }
     }
     
+    /// Sets fixed width and/or height constraints on the view.
+    ///
+    /// - Parameters:
+    ///   - width: The fixed width to apply. If nil, width constraint is not set. Defaults to nil.
+    ///   - height: The fixed height to apply. If nil, height constraint is not set. Defaults to nil.
+    ///
+    /// This method disables `translatesAutoresizingMaskIntoConstraints` and activates constraints for the specified dimensions.
     func setDimention(width: CGFloat? = nil, height: CGFloat? = nil) {
         translatesAutoresizingMaskIntoConstraints = false
         if let width {
@@ -47,26 +69,46 @@ extension UIView{
         }
     }
     
+    /// Anchors the view to fill its superview's bounds.
+    ///
+    /// This method sets the view's top, leading, bottom, and trailing anchors equal to its superview's anchors.
     func fillSuperView() {
         anchorView(top: superview?.topAnchor, leading: superview?.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.trailingAnchor)
     }
     
+    /// Centers the view within the specified view.
+    ///
+    /// - Parameter view: The view in which to center this view.
+    ///
+    /// This method centers the view horizontally and vertically in the specified view.
+    /// If the view does not have a superview, it prints an error message and returns.
     func center(in view: UIView) {
         guard let superview else{print("🛑 centerXY failed. Superview not found"); return}
         centerX(inView: superview)
         centerY(inView: superview)
     }
     
+    /// Centers the view horizontally in the specified view.
+    ///
+    /// - Parameter view: The view in which to center this view horizontally.
     func centerX(inView view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
+    /// Centers the view vertically in the specified view.
+    ///
+    /// - Parameter view: The view in which to center this view vertically.
     func centerY(inView view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
+    /// Renders the view into a UIImage.
+    ///
+    /// - Returns: A UIImage representation of the current view.
+    ///
+    /// This method uses UIGraphicsImageRenderer if available (iOS 10+), otherwise falls back to older APIs.
     func asImage() -> UIImage {
         if #available(iOS 10.0, *) {
             let renderer = UIGraphicsImageRenderer(bounds: bounds)
@@ -82,4 +124,3 @@ extension UIView{
         }
     }
 }
-

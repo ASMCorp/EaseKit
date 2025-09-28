@@ -9,6 +9,14 @@ import UIKit
 import SwiftUI
 
 extension UIColor {
+    /// Initializes a UIColor object from a hex string and an optional alpha value.
+    ///
+    /// - Parameters:
+    ///   - hexString: A string representing the color in hexadecimal format. It can be in the formats RGB (3 characters), RGB (6 characters), or ARGB (8 characters).
+    ///   - alpha: A Float value representing the alpha (opacity) of the color. Defaults to 1.0.
+    ///
+    /// The initializer supports hex strings with or without a leading '#' and ignores invalid characters.
+    /// If the hex string format is invalid, it defaults to black color.
     convenience init(hexString: String, alpha: Float = 1.0) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt64()
@@ -27,6 +35,10 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(alpha)*(CGFloat(a) / 255))
     }
     
+    /// A computed property that returns a random UIColor.
+    ///
+    /// The color components (red, green, blue) are randomly generated between 0 and 1.
+    /// The alpha value is always set to 1.0 (fully opaque).
     static var random: UIColor {
         return UIColor(
             red: .random(in: 0...1),
@@ -40,36 +52,15 @@ extension UIColor {
 
 @available(iOS 13.0, *)
 extension Color {
-    init?(hex: String) {
-        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
-        
-        var rgb: UInt64 = 0
-        
-        var r: CGFloat = 0.0
-        var g: CGFloat = 0.0
-        var b: CGFloat = 0.0
-        var a: CGFloat = 1.0
-        
-        let length = hexSanitized.count
-        
-        guard Scanner(string: hexSanitized).scanHexInt64(&rgb) else { return nil }
-        
-        if length == 6 {
-            r = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
-            g = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
-            b = CGFloat(rgb & 0x0000FF) / 255.0
-            
-        } else if length == 8 {
-            r = CGFloat((rgb & 0xFF000000) >> 24) / 255.0
-            g = CGFloat((rgb & 0x00FF0000) >> 16) / 255.0
-            b = CGFloat((rgb & 0x0000FF00) >> 8) / 255.0
-            a = CGFloat(rgb & 0x000000FF) / 255.0
-            
-        } else {
-            return nil
-        }
-        
-        self.init(red: r, green: g, blue: b, opacity: a)
+    /// Initializes a SwiftUI Color from a hex string and an optional alpha value.
+    ///
+    /// - Parameters:
+    ///   - hex: A string representing the color in hexadecimal format.
+    ///   - alpha: A Float value representing the alpha (opacity) of the color. Defaults to 1.0.
+    ///
+    /// - Returns: An optional Color initialized from the corresponding UIColor.
+    /// This initializer returns nil if the underlying UIColor initialization fails.
+    init?(hex: String, alpha: Float = 1.0) {
+        self.init(UIColor(hexString: hex, alpha: alpha))
     }
 }
