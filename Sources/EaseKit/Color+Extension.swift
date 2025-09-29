@@ -51,7 +51,7 @@ public extension UIColor {
 
 
 @available(iOS 13.0, *)
-extension Color {
+public extension Color {
     /// Initializes a SwiftUI Color from a hex string and an optional alpha value.
     ///
     /// - Parameters:
