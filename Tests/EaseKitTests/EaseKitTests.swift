@@ -12,7 +12,6 @@ final class EaseKitTests: XCTestCase {
         let view = UIView()
         let superview = UIView()
         superview.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         view.anchorView(top: superview.topAnchor,
                         leading: superview.leadingAnchor,
@@ -41,9 +40,8 @@ final class EaseKitTests: XCTestCase {
     
     func testSetDimension_setsWidthAndHeight() {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         
-        view.setDimention(width: 100, height: 200)
+        view.setDimension(width: 100, height: 200)
         
         let widthConstraint = view.constraints.first(where: { $0.firstAttribute == .width })
         XCTAssertEqual(widthConstraint?.constant, 100)
@@ -56,7 +54,6 @@ final class EaseKitTests: XCTestCase {
         let view = UIView()
         let superview = UIView()
         superview.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         view.fillSuperView()
         
@@ -79,7 +76,6 @@ final class EaseKitTests: XCTestCase {
         let view = UIView()
         let superview = UIView()
         superview.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         view.center(in: superview)
         
@@ -96,7 +92,6 @@ final class EaseKitTests: XCTestCase {
         let view = UIView()
         let superview = UIView()
         superview.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         view.centerX(inView: superview)
         
@@ -110,7 +105,6 @@ final class EaseKitTests: XCTestCase {
         let view = UIView()
         let superview = UIView()
         superview.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         view.centerY(inView: superview)
         

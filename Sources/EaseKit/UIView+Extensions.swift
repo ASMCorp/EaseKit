@@ -9,7 +9,7 @@ import UIKit
 
 /// Extension to UIView that provides convenience methods for setting Auto Layout constraints,
 /// centering views, and rendering a view as an image.
-extension UIView{
+public extension UIView{
     /// Anchors the view's edges to the specified anchors with optional padding.
     ///
     /// - Parameters:
@@ -54,11 +54,11 @@ extension UIView{
     /// Sets fixed width and/or height constraints on the view.
     ///
     /// - Parameters:
-    ///   - width: The fixed width to apply. If nil, width constraint is not set. Defaults to nil.
-    ///   - height: The fixed height to apply. If nil, height constraint is not set. Defaults to nil.
+    ///   - width: The fixed width to apply. If nil, width constraint is not set.
+    ///   - height: The fixed height to apply. If nil, height constraint is not set.
     ///
-    /// This method disables `translatesAutoresizingMaskIntoConstraints` and activates constraints for the specified dimensions.
-    func setDimention(width: CGFloat? = nil, height: CGFloat? = nil) {
+    /// This method disables `translatesAutoresizingMaskIntoConstraints` and activates width and/or height constraints if provided.
+    func setDimension(width: CGFloat? = nil, height: CGFloat? = nil) {
         translatesAutoresizingMaskIntoConstraints = false
         if let width {
             widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -80,9 +80,18 @@ extension UIView{
     ///
     /// - Parameter view: The view in which to center this view.
     ///
-    /// This method centers the view horizontally and vertically in the specified view.
-    /// If the view does not have a superview, it prints an error message and returns.
+    /// This method centers the view horizontally and vertically in the given view,
+    /// regardless of whether it is the direct superview.
     func center(in view: UIView) {
+        centerX(inView: view)
+        centerY(inView: view)
+    }
+    
+    /// Centers the view within its immediate superview.
+    ///
+    /// This method requires that the view already has a superview.
+    /// If no superview is found, it logs an error and does nothing.
+    func centerInsideParent(){
         guard let superview else{print("🛑 centerXY failed. Superview not found"); return}
         centerX(inView: superview)
         centerY(inView: superview)

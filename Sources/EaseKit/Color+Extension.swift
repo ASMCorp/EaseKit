@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-extension UIColor {
+public extension UIColor {
     /// Initializes a UIColor object from a hex string and an optional alpha value.
     ///
     /// - Parameters:
