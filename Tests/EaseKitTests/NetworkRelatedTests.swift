@@ -17,7 +17,7 @@ final class NetworkRelatedTests: XCTestCase {
         let fileExtension = "json"
         
         // Act
-        let url = URL(localResourceName: fileName, extensionName: fileExtension)
+        let url = URL(localResourceName: fileName, extensionName: fileExtension, bundle: .module)
         
         // Assert
         XCTAssertNotNil(url, "URL should not be nil for an existing resource.")
@@ -27,7 +27,7 @@ final class NetworkRelatedTests: XCTestCase {
     /// Tests that the initializer returns nil when the resource does not exist.
     func testMissingResourceReturnsNil() {
         // Act
-        let url = URL(localResourceName: "NonExistentFile", extensionName: "json")
+        let url = URL(localResourceName: "NonExistentFile", extensionName: "json", bundle: .module)
         
         // Assert
         XCTAssertNil(url, "URL should be nil for a missing resource.")
@@ -39,7 +39,7 @@ final class NetworkRelatedTests: XCTestCase {
         let fileName = "Config"  // Add "Config" file with no extension to your bundle for this test
         
         // Act
-        let url = URL(localResourceName: fileName)
+        let url = URL(localResourceName: fileName, bundle: .module)
         
         // Assert
         XCTAssertNotNil(url, "URL should be valid when a resource without extension exists.")

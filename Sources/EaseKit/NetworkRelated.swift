@@ -7,37 +7,43 @@
 
 import Foundation
 
-extension URL {
-    /// Initializes a `URL` for a local resource within a bundle.
+public extension URL {
+    /// Creates a `URL` pointing to a resource file in the specified bundle.
     ///
-    /// Automatically resolves the correct bundle:
-    /// - In an **app target**, it uses `Bundle.main`.
-    /// - In a **Swift Package**, it uses `Bundle.module`.
+    /// This initializer searches the provided `Bundle` for a file resource matching the given
+    /// name and optional file extension. If the resource exists, it returns a valid `URL`
+    /// pointing to it. Otherwise, it returns `nil`.
     ///
     /// - Parameters:
-    ///   - localResourceName: The name of the local resource (without file extension).
-    ///   - extensionName: The file extension (for example, `"json"` or `"txt"`). Default is `nil`.
-    ///   - bundle: (Optional) A custom bundle to search in. Defaults to the appropriate bundle based on context.
+    ///   - localResourceName: The name of the resource file without its file extension.
+    ///   - extensionName: The file extension of the resource (for example, `"json"`, `"txt"`).
+    ///                    Defaults to `nil` if the resource has no extension or the extension
+    ///                    is not required.
+    ///   - bundle: The `Bundle` in which to search for the resource. Defaults to `Bundle.main`.
     ///
-    /// - Returns: A valid `URL` if the resource exists in the bundle, otherwise `nil`.
+    /// - Returns: A `URL` pointing to the resource if found, otherwise `nil`.
     ///
-    /// ### Example
+    /// - Important:
+    ///   - Ensure the resource is included in the target’s **Copy Bundle Resources** phase
+    ///     for the specified bundle.
+    ///   - This initializer is failable and will return `nil` if the file does not exist.
+    ///
+    /// ### Example Usage:
     /// ```swift
     /// if let url = URL(localResourceName: "Data", extensionName: "json") {
-    ///     print("Found resource at \(url)")
+    ///     print("Resource found at \(url)")
+    /// } else {
+    ///     print("Resource not found")
     /// }
     /// ```
-    public init?(
+    ///
+    /// - Note: In Swift Packages, if the resource is part of the package, you should provide
+    ///         `Bundle.module` as the `bundle` parameter instead of the default `Bundle.main`.
+    init?(
         localResourceName: String,
-        extensionName: String? = nil
+        extensionName: String? = nil,
+        bundle: Bundle = Bundle.main
     ) {
-        let bundle: Bundle
-        #if SWIFT_PACKAGE
-            bundle = Bundle.module
-        #else
-            bundle = Bundle.main
-        #endif
-        
         guard let url = bundle.url(forResource: localResourceName, withExtension: extensionName) else {
             return nil
         }
