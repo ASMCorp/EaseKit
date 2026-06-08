@@ -1,0 +1,240 @@
+---
+layout: default
+title: "EaseKit - iOS Swift Package for UIKit & SwiftUI Extensions"
+description: "EaseKit is a free Swift Package Manager library for iOS. Simplify Auto Layout with UIView extensions, create colors from hex strings in SwiftUI, and speed up iOS development."
+---
+
+<div class="hero-section">
+  <h1>EaseKit</h1>
+  <p class="hero-tagline">A Lightweight Swift Package for iOS Development</p>
+  <p class="hero-subtext">Convenient extensions for UIKit and SwiftUI that make iOS development faster and more enjoyable.</p>
+  <div class="hero-buttons">
+    <a href="{{ site.baseurl }}/getting-started.html" class="btn btn-primary">Get Started</a>
+    <a href="{{ site.baseurl }}/api-reference.html" class="btn btn-secondary">API Reference</a>
+    <a href="https://github.com/ASMCorp/EaseKit" class="btn btn-outline">GitHub</a>
+  </div>
+</div>
+
+{% comment %} JSON-LD Structured Data {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "EaseKit",
+  "description": "A lightweight Swift Package that provides convenient extensions for UIKit and SwiftUI, making iOS development easier and more efficient.",
+  "programmingLanguage": "Swift",
+  "runtimePlatform": "iOS 12.0+",
+  "codeRepository": "https://github.com/ASMCorp/EaseKit",
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "author": {
+    "@type": "Organization",
+    "name": "ASMCorp",
+    "url": "https://github.com/ASMCorp"
+  },
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "iOS",
+  "softwareVersion": "1.0.0",
+  "keywords": "iOS, Swift, Swift Package Manager, UIKit, SwiftUI, extensions, Auto Layout, hex color"
+}
+</script>
+
+{% comment %} FAQ Structured Data {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is EaseKit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EaseKit is a free Swift Package Manager (SPM) library for iOS that provides convenient extensions for UIKit and SwiftUI. It includes UIView Auto Layout helpers, UIColor hex string initializers, SwiftUI Color extensions, and more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I install EaseKit in my iOS project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can install EaseKit using Swift Package Manager. In Xcode, go to File → Add Package Dependencies, enter https://github.com/ASMCorp/EaseKit.git, and click Add Package. Alternatively, add it to your Package.swift dependencies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What iOS version does EaseKit support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EaseKit requires iOS 12.0 or later, Swift 6.2+, and Xcode 14.0+."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I create a UIColor from a hex string in Swift?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With EaseKit, you can create a UIColor from a hex string using: let color = UIColor(hexString: \"#FF5733\"). It supports 3-character, 6-character, and 8-character hex formats with optional alpha values."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use hex colors in SwiftUI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EaseKit extends SwiftUI's Color with a hex initializer: Color(hex: \"#FF5733\"). You can also specify alpha: Color(hex: \"3498DB\", alpha: 0.5)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does EaseKit help with Auto Layout in UIKit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! EaseKit provides UIView extensions that simplify Auto Layout. Use anchorView() to pin edges with padding, fillSuperView() to fill the superview, center() to center in any view, and setDimension() for fixed sizes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is EaseKit free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, EaseKit is completely free and open source under the Apache 2.0 license. You can use it in personal and commercial projects."
+      }
+    }
+  ]
+}
+</script>
+
+## Why EaseKit?
+
+EaseKit is a **free Swift Package Manager library** designed to eliminate boilerplate code in iOS development. Whether you're building with UIKit or SwiftUI, EaseKit provides the helpers you need to write cleaner, more maintainable Swift code.
+
+<div class="feature-grid">
+  <div class="feature-card">
+    <h3>🎨 Hex Color Extensions</h3>
+    <p>Create <code>UIColor</code> and SwiftUI <code>Color</code> instances from hex strings. Supports 3, 6, and 8 character formats with optional alpha. Perfect for design system colors and dynamic theming.</p>
+    <div class="code-example">
+      <pre><code class="language-swift">let brandColor = UIColor(hexString: "#007AFF")
+let semiBlue = Color(hex: "007AFF", alpha: 0.5)
+let randomColor = UIColor.random</code></pre>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <h3>📐 Auto Layout Helpers</h3>
+    <p>Simplify UIView Auto Layout with intuitive extension methods. Anchor views to edges, fill superviews, center views, and set dimensions with a single method call instead of verbose constraint code.</p>
+    <div class="code-example">
+      <pre><code class="language-swift">myView.anchorView(
+    top: parent.topAnchor,
+    leading: parent.leadingAnchor,
+    paddingTop: 20, paddingLeft: 16
+)
+logoView.center(in: parentView)
+backgroundView.fillSuperView()</code></pre>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <h3>🖼️ View to Image</h3>
+    <p>Convert any UIView to a UIImage with a single method call. Useful for generating thumbnails, sharing view content, or creating snapshots for testing.</p>
+    <div class="code-example">
+      <pre><code class="language-swift">let cardView = CardView()
+// ... configure the view ...
+let image = cardView.asImage()</code></pre>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <h3>📦 Resource URL Helper</h3>
+    <p>Create URLs for bundle resources with a clean, type-safe initializer. Works with both main bundle and Swift Package resources.</p>
+    <div class="code-example">
+      <pre><code class="language-swift">if let url = URL(localResourceName: "config", extensionName: "json") {
+    // Load the resource
+}</code></pre>
+    </div>
+  </div>
+</div>
+
+## Quick Installation
+
+### Swift Package Manager (Xcode)
+
+1. Open your Xcode project
+2. Select **File → Add Package Dependencies...**
+3. Enter: `https://github.com/ASMCorp/EaseKit.git`
+4. Click **Add Package**
+
+### Package.swift
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/ASMCorp/EaseKit.git", from: "1.0.0")
+]
+```
+
+Then add `EaseKit` to your target's dependencies:
+
+```swift
+.target(
+    name: "YourApp",
+    dependencies: ["EaseKit"]
+)
+```
+
+## Quick Start
+
+```swift
+import EaseKit
+
+// Hex colors in UIKit
+let primaryColor = UIColor(hexString: "#007AFF")
+let backgroundColor = UIColor(hexString: "#F2F2F7")
+
+// Hex colors in SwiftUI
+struct ContentView: View {
+    var body: some View {
+        Text("Hello, EaseKit!")
+            .foregroundColor(Color(hex: "#007AFF"))
+            .background(Color(hex: "#F2F2F7", alpha: 0.5))
+    }
+}
+
+// Auto Layout with UIView extensions
+let container = UIView()
+let label = UILabel()
+label.text = "Hello, World!"
+
+container.addSubview(label)
+label.anchorView(
+    top: container.topAnchor,
+    leading: container.leadingAnchor,
+    trailing: container.trailingAnchor,
+    paddingTop: 16,
+    paddingLeft: 20,
+    paddingRight: 20
+)
+label.setDimension(height: 44)
+
+// Center a view
+let logo = UIImageView(image: UIImage(named: "logo"))
+container.addSubview(logo)
+logo.center(in: container)
+logo.setDimension(width: 120, height: 120)
+```
+
+## Requirements
+
+| Requirement | Version |
+|-------------|---------|
+| iOS         | 12.0+   |
+| Swift       | 6.2+    |
+| Xcode       | 14.0+   |
+
+## Open Source & Free
+
+EaseKit is released under the [Apache 2.0 License](https://github.com/ASMCorp/EaseKit/blob/main/LICENSE). Free for personal and commercial use.
+
+<div class="cta-section">
+  <h2>Ready to speed up your iOS development?</h2>
+  <a href="{{ site.baseurl }}/getting-started.html" class="btn btn-primary btn-large">Get Started →</a>
+  <a href="https://github.com/ASMCorp/EaseKit" class="btn btn-outline btn-large">⭐ Star on GitHub</a>
+</div>
