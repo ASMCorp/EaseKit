@@ -1,0 +1,40 @@
+title: EaseKit
+description: A lightweight Swift Package with convenient extensions for UIKit and SwiftUI. Simplify iOS development with hex colors, Auto Layout helpers, and UIView utilities.
+baseurl: "/EaseKit"
+url: "https://asmcorp.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# SEO defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: "/EaseKit/assets/og-image.png"
+
+# Site settings
+lang: en_US
+author: ASMCorp
+
+# Navigation
+header_pages:
+  - getting-started.md
+  - api-reference.md
+  - examples.md
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+  - README.md
