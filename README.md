@@ -1,37 +1,88 @@
 # EaseKit
 
-A lightweight Swift Package that provides convenient extensions for UIKit and SwiftUI, making iOS development easier and more efficient.
+[![Swift](https://img.shields.io/badge/Swift-6.2-orange.svg?logo=swift)](https://swift.org)
+[![iOS](https://img.shields.io/badge/iOS-12.0+-blue.svg?logo=apple)](https://developer.apple.com/ios)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![Platforms](https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS-lightgrey.svg)](https://developer.apple.com)
+[![Documentation](https://img.shields.io/badge/Docs-Live-blueviolet.svg)](https://asmcorp.github.io/EaseKit/)
+
+A lightweight Swift Package that provides convenient extensions for **UIKit** and **SwiftUI**, making iOS development easier and more efficient.
+
+**[Documentation](https://asmcorp.github.io/EaseKit/)  |  [API Reference](https://asmcorp.github.io/EaseKit/api-reference.html)  |  [Examples](https://asmcorp.github.io/EaseKit/examples.html)**
+
+---
 
 ## Features
 
-### Color Extensions
-- **Hex Color Initialization**: Create colors from hex strings with optional alpha values
-- **Random Colors**: Generate random colors for testing and prototyping
-- **SwiftUI Support**: Use hex colors seamlessly in SwiftUI views
-
-### UIView Extensions
-- **Auto Layout Helpers**: Simplify constraint creation with intuitive methods
-- **View Anchoring**: Easily anchor views to edges with customizable padding
-- **Centering Utilities**: Center views horizontally, vertically, or both
-- **Image Rendering**: Convert any UIView to a UIImage
+- **Hex Color Initialization** - Create UIColor and SwiftUI Color from hex strings (#RGB, #RRGGBB, #AARRGGBB)
+- **Random Colors** - Generate random UIColor instances for testing and prototyping
+- **Auto Layout Helpers** - Simplify UIView constraint creation with intuitive anchor methods
+- **View Centering** - Center views horizontally, vertically, or both in any view
+- **View to Image** - Convert any UIView to a UIImage with a single method call
+- **Resource URLs** - Type-safe URL initialization for bundle resources
+- **Zero Dependencies** - Lightweight, self-contained, no external dependencies
 
 ## Installation
 
-### Swift Package Manager
-
-Add EaseKit to your project using Swift Package Manager:
+### Swift Package Manager (Xcode)
 
 1. In Xcode, select **File → Add Package Dependencies...**
 2. Enter the repository URL: `https://github.com/ASMCorp/EaseKit.git`
 3. Select the version you want to use
 4. Click **Add Package**
 
-Alternatively, add it to your `Package.swift` file:
+### Package.swift
+
+Add EaseKit to your `Package.swift` file:
 
 ```swift
 dependencies: [
     .package(url: "https://github.com/ASMCorp/EaseKit.git", from: "1.0.0")
 ]
+```
+
+Then add it to your target's dependencies:
+
+```swift
+.target(
+    name: "YourApp",
+    dependencies: ["EaseKit"]
+)
+```
+
+## Quick Start
+
+```swift
+import EaseKit
+
+// Hex colors in UIKit
+let primaryColor = UIColor(hexString: "#007AFF")
+let semiBlue = UIColor(hexString: "#3498DB", alpha: 0.8)
+let randomColor = UIColor.random
+
+// Hex colors in SwiftUI
+struct ContentView: View {
+    var body: some View {
+        Text("Hello, EaseKit!")
+            .foregroundColor(Color(hex: "#FF5733"))
+            .background(Color(hex: "3498DB", alpha: 0.5))
+    }
+}
+
+// Auto Layout helpers
+myView.anchorView(
+    top: parentView.topAnchor,
+    leading: parentView.leadingAnchor,
+    trailing: parentView.trailingAnchor,
+    paddingTop: 20,
+    paddingLeft: 16,
+    paddingRight: 16
+)
+
+// Center views
+logoView.center(in: containerView)
+backgroundView.fillSuperView()
 ```
 
 ## Usage
@@ -130,24 +181,42 @@ let image = myView.asImage()
 // Use the image (save, share, etc.)
 ```
 
+### URL Extensions
+
+#### Local Resource URL
+
+```swift
+import EaseKit
+
+// Load a resource from the main bundle
+if let url = URL(localResourceName: "config", extensionName: "json") {
+    // Process the resource file
+}
+```
+
 ## Requirements
 
-- iOS 10.0+
+- iOS 12.0+
 - Swift 6.2+
 - Xcode 14.0+
 
-## License
+## Documentation
 
-This project is licensed under the Apache 2.0 - see the LICENSE file for details.
+Full documentation, API reference, and code examples are available at:
+[https://asmcorp.github.io/EaseKit/](https://asmcorp.github.io/EaseKit/)
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## License
+
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
+
 ## Author
 
-ASM Anik
+ASM Anik ([@ASMCorp](https://github.com/ASMCorp))
 
 ## Acknowledgments
 
-Built with ❤️ to make iOS development more enjoyable.
+Built with love to make iOS development more enjoyable.
