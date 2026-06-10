@@ -3,7 +3,6 @@ layout: post
 title: "How to Use Hex Colors in SwiftUI and UIKit - Complete Guide"
 description: "Learn how to use hex color codes in SwiftUI and UIKit with EaseKit. Complete guide covering UIColor hex initializers, SwiftUI Color extensions, design system colors, and best practices for iOS development."
 date: 2026-06-10
-categories: [ios, swift, tutorial]
 ---
 
 # How to Use Hex Colors in SwiftUI and UIKit
