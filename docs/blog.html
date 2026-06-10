@@ -1,0 +1,31 @@
+---
+layout: page
+title: "EaseKit Blog - iOS Development Tips & Tutorials"
+description: "iOS development tutorials and tips covering Swift, SwiftUI, UIKit, Auto Layout, hex colors, and more. Learn how to simplify iOS development with EaseKit."
+permalink: /blog/
+---
+
+# EaseKit Blog
+
+iOS development tutorials, tips, and best practices.
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <h3>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h3>
+      <p>{{ post.description | truncate: 160 }}</p>
+    </li>
+  {% endfor %}
+</ul>
+
+## Latest Tutorials
+
+- [How to Use Hex Colors in SwiftUI and UIKit](/EaseKit/2026/06/10/hex-colors-swiftui-uikit-guide.html)
+- [Simplify iOS Auto Layout with UIView Extensions](/EaseKit/2026/06/10/simplify-ios-autolayout-uiview-extensions.html)
+
+## About EaseKit
+
+[EaseKit](/) is a free Swift Package that provides convenient extensions for UIKit and SwiftUI. Simplify iOS development with hex colors, Auto Layout helpers, and UIView utilities.
