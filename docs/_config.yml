@@ -6,6 +6,7 @@ url: "https://asmcorp.github.io"
 # Build settings
 markdown: kramdown
 theme: minima
+permalink: /blog/:year/:month/:day/:title.html
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap

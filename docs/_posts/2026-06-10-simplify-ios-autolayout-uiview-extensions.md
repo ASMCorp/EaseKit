@@ -3,7 +3,6 @@ layout: post
 title: "Simplify iOS Auto Layout with UIView Extensions - Complete Guide"
 description: "Learn how to simplify iOS Auto Layout with EaseKit UIView extensions. Complete guide covering anchorView, fillSuperView, center, setDimension methods with practical code examples for UIKit."
 date: 2026-06-10
-categories: [ios, swift, autolayout, tutorial]
 ---
 
 # Simplify iOS Auto Layout with UIView Extensions
