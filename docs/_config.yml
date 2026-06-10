@@ -16,7 +16,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: "/EaseKit/assets/og-image.png"
+      image: "/assets/og-image.png"
 
 # Site settings
 lang: en_US
@@ -27,6 +27,7 @@ header_pages:
   - getting-started.md
   - api-reference.md
   - examples.md
+  - blog.html
 
 # Exclude from build
 exclude:

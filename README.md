@@ -6,10 +6,11 @@
 [![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 [![Platforms](https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS-lightgrey.svg)](https://developer.apple.com)
 [![Documentation](https://img.shields.io/badge/Docs-Live-blueviolet.svg)](https://asmcorp.github.io/EaseKit/)
+[![Blog](https://img.shields.io/badge/Blog-Tutorials-ff69b4.svg)](https://asmcorp.github.io/EaseKit/blog/)
 
 A lightweight Swift Package that provides convenient extensions for **UIKit** and **SwiftUI**, making iOS development easier and more efficient.
 
-**[Documentation](https://asmcorp.github.io/EaseKit/)  |  [API Reference](https://asmcorp.github.io/EaseKit/api-reference.html)  |  [Examples](https://asmcorp.github.io/EaseKit/examples.html)**
+**[Documentation](https://asmcorp.github.io/EaseKit/)  |  [API Reference](https://asmcorp.github.io/EaseKit/api-reference.html)  |  [Examples](https://asmcorp.github.io/EaseKit/examples.html)  |  [Blog](https://asmcorp.github.io/EaseKit/blog/)**
 
 ---
 
